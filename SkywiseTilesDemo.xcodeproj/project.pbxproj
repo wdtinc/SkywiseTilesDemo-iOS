@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10D4FC001CF617FE0026151C /* SwarmAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4FBFF1CF617FE0026151C /* SwarmAuthentication.swift */; };
+		D00195431CDA41A30009DF3B /* Swarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D001953C1CDA41A30009DF3B /* Swarm.framework */; };
+		D00195441CDA41A30009DF3B /* Swarm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D001953C1CDA41A30009DF3B /* Swarm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D001954D1CDA41BF0009DF3B /* swarmAlertTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = D0AA4E771CD1048A0017E73A /* swarmAlertTypes.json */; };
+		D001954E1CDA41BF0009DF3B /* swarmLayerGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = D0AA4E791CD1048A0017E73A /* swarmLayerGroups.json */; };
+		D00195531CDA42D00009DF3B /* SwarmOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AA4E761CD1048A0017E73A /* SwarmOverlay.swift */; };
+		D00195561CDA46A20009DF3B /* WDTRendererLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00195551CDA46A20009DF3B /* WDTRendererLoopViewController.m */; };
+		D0124D1B1CE65A1200ED0D05 /* SwarmLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0124D1A1CE65A1200ED0D05 /* SwarmLoop.swift */; };
+		D05A637E1CDBDBEF004051C7 /* SwarmProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A637D1CDBDBEF004051C7 /* SwarmProducts.swift */; };
+		D05A63801CDBE022004051C7 /* SwarmHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A637F1CDBE022004051C7 /* SwarmHelpers.swift */; };
+		D05A63821CDBE16F004051C7 /* SwarmDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A63811CDBE16F004051C7 /* SwarmDownloadOperation.swift */; };
+		D0A2AC281CEE1353009C7D18 /* LayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2AC271CEE1353009C7D18 /* LayersViewController.swift */; };
+		D0A2AC2A1CEE1802009C7D18 /* Swarm.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A2AC291CEE1802009C7D18 /* Swarm.strings */; };
+		D0A2AC2D1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2AC2C1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.m */; };
+		D0A2AC301CEE53BE009C7D18 /* WDTLayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2AC2F1CEE53BE009C7D18 /* WDTLayersViewController.m */; };
+		D0A2AC321CEE6E2B009C7D18 /* RendererLoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2AC311CEE6E2B009C7D18 /* RendererLoopViewController.swift */; };
+		D0AA4E621CD103070017E73A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AA4E611CD103070017E73A /* AppDelegate.swift */; };
+		D0AA4E641CD103070017E73A /* AnnotationLoopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AA4E631CD103070017E73A /* AnnotationLoopViewController.swift */; };
+		D0AA4E671CD103070017E73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AA4E651CD103070017E73A /* Main.storyboard */; };
+		D0AA4E691CD103070017E73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0AA4E681CD103070017E73A /* Assets.xcassets */; };
+		D0AA4E6C1CD103070017E73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AA4E6A1CD103070017E73A /* LaunchScreen.storyboard */; };
+		D0AA4E741CD103710017E73A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AA4E731CD103710017E73A /* MapKit.framework */; };
+		D0EE734C1CF622B10043119B /* SwarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE734B1CF622B10043119B /* SwarmManager.swift */; };
+		D0EE734E1CF6238C0043119B /* SwarmTileOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE734D1CF6238C0043119B /* SwarmTileOverlayRenderer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D00195411CDA41A30009DF3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0AA4E561CD103070017E73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D001953B1CDA41A30009DF3B;
+			remoteInfo = Swarm;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D00195481CDA41A30009DF3B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D00195441CDA41A30009DF3B /* Swarm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		10D4FBFF1CF617FE0026151C /* SwarmAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmAuthentication.swift; sourceTree = "<group>"; };
+		D001953C1CDA41A30009DF3B /* Swarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D001953E1CDA41A30009DF3B /* Swarm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swarm.h; sourceTree = "<group>"; };
+		D00195401CDA41A30009DF3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D00195541CDA46A20009DF3B /* WDTRendererLoopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTRendererLoopViewController.h; sourceTree = "<group>"; };
+		D00195551CDA46A20009DF3B /* WDTRendererLoopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTRendererLoopViewController.m; sourceTree = "<group>"; };
+		D0124D1A1CE65A1200ED0D05 /* SwarmLoop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmLoop.swift; sourceTree = "<group>"; };
+		D05A637D1CDBDBEF004051C7 /* SwarmProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmProducts.swift; sourceTree = "<group>"; };
+		D05A637F1CDBE022004051C7 /* SwarmHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmHelpers.swift; sourceTree = "<group>"; };
+		D05A63811CDBE16F004051C7 /* SwarmDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmDownloadOperation.swift; sourceTree = "<group>"; };
+		D0A2AC271CEE1353009C7D18 /* LayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayersViewController.swift; sourceTree = "<group>"; };
+		D0A2AC291CEE1802009C7D18 /* Swarm.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Swarm.strings; sourceTree = "<group>"; };
+		D0A2AC2B1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTAnnotationLoopViewController.h; sourceTree = "<group>"; };
+		D0A2AC2C1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTAnnotationLoopViewController.m; sourceTree = "<group>"; };
+		D0A2AC2E1CEE53BE009C7D18 /* WDTLayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTLayersViewController.h; sourceTree = "<group>"; };
+		D0A2AC2F1CEE53BE009C7D18 /* WDTLayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTLayersViewController.m; sourceTree = "<group>"; };
+		D0A2AC311CEE6E2B009C7D18 /* RendererLoopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererLoopViewController.swift; sourceTree = "<group>"; };
+		D0AA4E5E1CD103070017E73A /* Skywise Tiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skywise Tiles.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0AA4E611CD103070017E73A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0AA4E631CD103070017E73A /* AnnotationLoopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationLoopViewController.swift; sourceTree = "<group>"; };
+		D0AA4E661CD103070017E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D0AA4E681CD103070017E73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0AA4E6B1CD103070017E73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0AA4E6D1CD103070017E73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0AA4E731CD103710017E73A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D0AA4E761CD1048A0017E73A /* SwarmOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmOverlay.swift; sourceTree = "<group>"; };
+		D0AA4E771CD1048A0017E73A /* swarmAlertTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = swarmAlertTypes.json; sourceTree = "<group>"; };
+		D0AA4E791CD1048A0017E73A /* swarmLayerGroups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = swarmLayerGroups.json; sourceTree = "<group>"; };
+		D0EE734B1CF622B10043119B /* SwarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmManager.swift; sourceTree = "<group>"; };
+		D0EE734D1CF6238C0043119B /* SwarmTileOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmTileOverlayRenderer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D00195381CDA41A30009DF3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0AA4E5B1CD103070017E73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AA4E741CD103710017E73A /* MapKit.framework in Frameworks */,
+				D00195431CDA41A30009DF3B /* Swarm.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D001953D1CDA41A30009DF3B /* Swarm */ = {
+			isa = PBXGroup;
+			children = (
+				D00195401CDA41A30009DF3B /* Info.plist */,
+				D0A2AC291CEE1802009C7D18 /* Swarm.strings */,
+				D0AA4E771CD1048A0017E73A /* swarmAlertTypes.json */,
+				D0AA4E791CD1048A0017E73A /* swarmLayerGroups.json */,
+				D001953E1CDA41A30009DF3B /* Swarm.h */,
+				D0EE734B1CF622B10043119B /* SwarmManager.swift */,
+				D0AA4E761CD1048A0017E73A /* SwarmOverlay.swift */,
+				D0EE734D1CF6238C0043119B /* SwarmTileOverlayRenderer.swift */,
+				D05A637D1CDBDBEF004051C7 /* SwarmProducts.swift */,
+				D05A637F1CDBE022004051C7 /* SwarmHelpers.swift */,
+				D05A63811CDBE16F004051C7 /* SwarmDownloadOperation.swift */,
+				D0124D1A1CE65A1200ED0D05 /* SwarmLoop.swift */,
+				10D4FBFF1CF617FE0026151C /* SwarmAuthentication.swift */,
+			);
+			path = Swarm;
+			sourceTree = "<group>";
+		};
+		D0A2AC361CEFACD7009C7D18 /* Objective C Examples */ = {
+			isa = PBXGroup;
+			children = (
+				D00195541CDA46A20009DF3B /* WDTRendererLoopViewController.h */,
+				D00195551CDA46A20009DF3B /* WDTRendererLoopViewController.m */,
+				D0A2AC2B1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.h */,
+				D0A2AC2C1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.m */,
+				D0A2AC2E1CEE53BE009C7D18 /* WDTLayersViewController.h */,
+				D0A2AC2F1CEE53BE009C7D18 /* WDTLayersViewController.m */,
+			);
+			name = "Objective C Examples";
+			sourceTree = "<group>";
+		};
+		D0A2AC371CEFACE9009C7D18 /* Swift Examples */ = {
+			isa = PBXGroup;
+			children = (
+				D0AA4E631CD103070017E73A /* AnnotationLoopViewController.swift */,
+				D0A2AC311CEE6E2B009C7D18 /* RendererLoopViewController.swift */,
+				D0A2AC271CEE1353009C7D18 /* LayersViewController.swift */,
+			);
+			name = "Swift Examples";
+			sourceTree = "<group>";
+		};
+		D0A2AC381CEFACFF009C7D18 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D0AA4E651CD103070017E73A /* Main.storyboard */,
+				D0AA4E681CD103070017E73A /* Assets.xcassets */,
+				D0AA4E6A1CD103070017E73A /* LaunchScreen.storyboard */,
+				D0AA4E6D1CD103070017E73A /* Info.plist */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		D0AA4E551CD103070017E73A = {
+			isa = PBXGroup;
+			children = (
+				D0AA4E731CD103710017E73A /* MapKit.framework */,
+				D0AA4E601CD103070017E73A /* SkywiseTilesDemo */,
+				D001953D1CDA41A30009DF3B /* Swarm */,
+				D0AA4E5F1CD103070017E73A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0AA4E5F1CD103070017E73A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0AA4E5E1CD103070017E73A /* Skywise Tiles.app */,
+				D001953C1CDA41A30009DF3B /* Swarm.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0AA4E601CD103070017E73A /* SkywiseTilesDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D0AA4E611CD103070017E73A /* AppDelegate.swift */,
+				D0A2AC371CEFACE9009C7D18 /* Swift Examples */,
+				D0A2AC361CEFACD7009C7D18 /* Objective C Examples */,
+				D0A2AC381CEFACFF009C7D18 /* Other Sources */,
+			);
+			path = SkywiseTilesDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D00195391CDA41A30009DF3B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D001953B1CDA41A30009DF3B /* Swarm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D00195471CDA41A30009DF3B /* Build configuration list for PBXNativeTarget "Swarm" */;
+			buildPhases = (
+				D00195371CDA41A30009DF3B /* Sources */,
+				D00195381CDA41A30009DF3B /* Frameworks */,
+				D00195391CDA41A30009DF3B /* Headers */,
+				D001953A1CDA41A30009DF3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swarm;
+			productName = Swarm;
+			productReference = D001953C1CDA41A30009DF3B /* Swarm.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D0AA4E5D1CD103070017E73A /* SkywiseTilesDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0AA4E701CD103070017E73A /* Build configuration list for PBXNativeTarget "SkywiseTilesDemo" */;
+			buildPhases = (
+				D0AA4E5A1CD103070017E73A /* Sources */,
+				D0AA4E5B1CD103070017E73A /* Frameworks */,
+				D0AA4E5C1CD103070017E73A /* Resources */,
+				D00195481CDA41A30009DF3B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D00195421CDA41A30009DF3B /* PBXTargetDependency */,
+			);
+			name = SkywiseTilesDemo;
+			productName = NewMapTest;
+			productReference = D0AA4E5E1CD103070017E73A /* Skywise Tiles.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0AA4E561CD103070017E73A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Weather Decision Technologies, Inc";
+				TargetAttributes = {
+					D001953B1CDA41A30009DF3B = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 6JY88B8V7U;
+						LastSwiftMigration = 0830;
+					};
+					D0AA4E5D1CD103070017E73A = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FCCYA685EH;
+						LastSwiftMigration = 0830;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = D0AA4E591CD103070017E73A /* Build configuration list for PBXProject "SkywiseTilesDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0AA4E551CD103070017E73A;
+			productRefGroup = D0AA4E5F1CD103070017E73A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0AA4E5D1CD103070017E73A /* SkywiseTilesDemo */,
+				D001953B1CDA41A30009DF3B /* Swarm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D001953A1CDA41A30009DF3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A2AC2A1CEE1802009C7D18 /* Swarm.strings in Resources */,
+				D001954E1CDA41BF0009DF3B /* swarmLayerGroups.json in Resources */,
+				D001954D1CDA41BF0009DF3B /* swarmAlertTypes.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0AA4E5C1CD103070017E73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AA4E6C1CD103070017E73A /* LaunchScreen.storyboard in Resources */,
+				D0AA4E691CD103070017E73A /* Assets.xcassets in Resources */,
+				D0AA4E671CD103070017E73A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D00195371CDA41A30009DF3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0EE734C1CF622B10043119B /* SwarmManager.swift in Sources */,
+				10D4FC001CF617FE0026151C /* SwarmAuthentication.swift in Sources */,
+				D0EE734E1CF6238C0043119B /* SwarmTileOverlayRenderer.swift in Sources */,
+				D05A637E1CDBDBEF004051C7 /* SwarmProducts.swift in Sources */,
+				D05A63821CDBE16F004051C7 /* SwarmDownloadOperation.swift in Sources */,
+				D00195531CDA42D00009DF3B /* SwarmOverlay.swift in Sources */,
+				D0124D1B1CE65A1200ED0D05 /* SwarmLoop.swift in Sources */,
+				D05A63801CDBE022004051C7 /* SwarmHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0AA4E5A1CD103070017E73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A2AC301CEE53BE009C7D18 /* WDTLayersViewController.m in Sources */,
+				D0AA4E641CD103070017E73A /* AnnotationLoopViewController.swift in Sources */,
+				D0A2AC2D1CEE40F9009C7D18 /* WDTAnnotationLoopViewController.m in Sources */,
+				D00195561CDA46A20009DF3B /* WDTRendererLoopViewController.m in Sources */,
+				D0A2AC281CEE1353009C7D18 /* LayersViewController.swift in Sources */,
+				D0A2AC321CEE6E2B009C7D18 /* RendererLoopViewController.swift in Sources */,
+				D0AA4E621CD103070017E73A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D00195421CDA41A30009DF3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D001953B1CDA41A30009DF3B /* Swarm */;
+			targetProxy = D00195411CDA41A30009DF3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D0AA4E651CD103070017E73A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0AA4E661CD103070017E73A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D0AA4E6A1CD103070017E73A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0AA4E6B1CD103070017E73A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D00195451CDA41A30009DF3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Swarm/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdtinc.Swarm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D00195461CDA41A30009DF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Swarm/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdtinc.Swarm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D0AA4E6E1CD103070017E73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0AA4E6F1CD103070017E73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0AA4E711CD103070017E73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = SkywiseTilesDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdtinc.SkywiseTiles;
+				PRODUCT_NAME = "Skywise Tiles";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D0AA4E721CD103070017E73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = SkywiseTilesDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdtinc.SkywiseTiles;
+				PRODUCT_NAME = "Skywise Tiles";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D00195471CDA41A30009DF3B /* Build configuration list for PBXNativeTarget "Swarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D00195451CDA41A30009DF3B /* Debug */,
+				D00195461CDA41A30009DF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0AA4E591CD103070017E73A /* Build configuration list for PBXProject "SkywiseTilesDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0AA4E6E1CD103070017E73A /* Debug */,
+				D0AA4E6F1CD103070017E73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0AA4E701CD103070017E73A /* Build configuration list for PBXNativeTarget "SkywiseTilesDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0AA4E711CD103070017E73A /* Debug */,
+				D0AA4E721CD103070017E73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0AA4E561CD103070017E73A /* Project object */;
+}

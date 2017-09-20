@@ -1,0 +1,47 @@
+[{
+	"id": "none",
+	"layerName": "%@"
+}, {
+	"id": "stormandtornadoes",
+	"layerName": "sva,toa,svw,tow,%@,svw,tow",
+	"layerStyle": "default,,,,,wapo,wapo"
+}, {
+	"id": "flood",
+	"layerName": "ffa,flw,ffw,%@,flw,ffw",
+	"layerStyle": "default,,,,wapo,wapo"
+}, {
+	"id": "winter",
+	"layerName": "bza,wwy,wsa,bzw,wsw,%@,bzw,wsw",
+	"layerStyle": "default,,,,,,wapo,wapo"
+}, {
+	"id": "snow",
+	"layerName": "sby,sny,sbw,hsw,%@,sbw,hsw",
+	"layerStyle": "default,,,,,wapo,wapo"
+}, {
+	"id": "ice",
+	"layerName": "ipy,zry,isa,ipw,isw,%@,ipw,isw",
+	"layerStyle": "default,,,,,,wapo,wapo"
+}, {
+	"id": "freezing",
+	"layerName": "fry,frw,fzw,%@,frw,fzw",
+	"layerStyle": "default,,,,wapo,wapo"
+}, {
+	"id": "fog",
+	"layerName": "zfy,fgy,%@",
+	"layerStyle": "default,default,default"
+}, {
+	"id": "fire",
+	"layerName": "fwa,fww,%@,fww",
+	"layerStyle": "default,default,default,wapo"
+}, {
+	"id": "wind",
+	"layerName": "duy,wiy,hwa,hwy,dsw,hww,%@,dsw,hww",
+	"layerStyle": "default,,,,,,,wapo,wapo"
+}, {
+	"id": "hurricaneandtropical",
+	"layerName": "tra,hua,trw,huw,%@,trw,huw",
+	"layerStyle": "default,,,,,wapo,wapo"
+}, {
+	"id": "hurricanetracks",
+	"layerName": "%@,tropfcstfan,troppasttrack,tropfcsttrack,tropcurpos,tropinvest"
+}]

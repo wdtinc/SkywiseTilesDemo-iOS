@@ -1,0 +1,23 @@
+/* 
+  Swarm.strings
+  SwarmKit
+
+  Created by Ross Kimes on 2/26/14.
+  Copyright (c) 2014 Weather Decision Technologies, Inc. All rights reserved.
+*/
+
+"lowaltradarcontours" = "Radar";
+"irsatellitegrid" = "Satellite";
+
+"none" = "No Overlay";
+"stormandtornadoes" = "Thunderstorms and Tornadoes";
+"flood" = "Floods";
+"winter" = "Winter";
+"snow" = "Snow";
+"ice" = "Ice";
+"freezing" = "Freezing";
+"fog" = "Fog";
+"fire" = "Fire";
+"wind" = "Wind";
+"hurricaneandtropical" = "Hurricane and Tropical";
+"hurricanetracks" = "Hurricane and Tropical Tracks";
