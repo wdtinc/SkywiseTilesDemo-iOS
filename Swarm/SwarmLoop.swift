@@ -156,7 +156,7 @@ class SwarmCompositor {
 
 		paths.forEach { (path) in
 			let url = swarmOverlay.urlForTile(path, timestamp: timestamp)
-			if let image = SwarmManager.sharedManager.cache.object(forKey: url as AnyObject) {
+			if let image = SwarmManager.sharedManager.cache.object(forKey: url as AnyObject) as? UIImage {
 				let x = (path.x < west) ? path.x - west + worldWidth : path.x - west
 				let y = path.y - north
 				let rect = CGRect(x: CGFloat(x) * tileSize, y: CGFloat(y) * tileSize, width: tileSize, height: tileSize)
