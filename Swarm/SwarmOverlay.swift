@@ -28,10 +28,10 @@ import MapKit
 	let baseLayerName: String
 	let style: String
 
-	dynamic open fileprivate(set) var frameDate: Date? = nil
-	dynamic open fileprivate(set) var latestDate: Date? = nil
+	@objc dynamic open fileprivate(set) var frameDate: Date? = nil
+	@objc dynamic open fileprivate(set) var latestDate: Date? = nil
 	
-	open var animating: Bool { return frameTimer != nil || pendingFetch != nil }
+	@objc open var animating: Bool { return frameTimer != nil || pendingFetch != nil }
 
 	open var alpha: CGFloat = 1.0
 	open var debug: Bool = false
@@ -262,7 +262,7 @@ extension SwarmOverlay {
 
 	var isTimestampValid: Bool { return currentFrameTimestamp.characters.count > 0 }
 	
-	public func queryTimes(_ completionBlock:@escaping (_ dataAvailable: Bool, _ error: NSError?)->Void) {
+	@objc public func queryTimes(_ completionBlock:@escaping (_ dataAvailable: Bool, _ error: NSError?)->Void) {
 		manager.assertSetup()
 		
 		guard
@@ -295,15 +295,15 @@ extension SwarmOverlay {
 		task.resume()
 	}
 	
-	public func fetchTilesForAnimation(_ mapRect: MKMapRect, readyBlock: @escaping ((Void)->Void)) -> Progress {
+	@objc public func fetchTilesForAnimation(_ mapRect: MKMapRect, readyBlock: @escaping (()->Void)) -> Progress {
 		return downloadTiles(mapRect, renderFrames: false, finishedBlock: readyBlock)
 	}
 
-	public func fetchFramesForAnimation(_ mapRect: MKMapRect, readyBlock: @escaping ((Void)->Void)) -> Progress {
+	public func fetchFramesForAnimation(_ mapRect: MKMapRect, readyBlock: @escaping (()->Void)) -> Progress {
 		return downloadTiles(mapRect, renderFrames: true, finishedBlock: readyBlock)
 	}
 	
-	public func startUpdating(_ now: Bool = false, block: @escaping (Bool, NSError?)->Void) {
+	@objc public func startUpdating(_ now: Bool = false, block: @escaping (Bool, NSError?)->Void) {
 		updateTimer?.invalidate()
 		updateTimer = Timer.repeatingBlockTimer(60.0) { [weak self] in
 			self?.queryTimes(block)
@@ -311,9 +311,9 @@ extension SwarmOverlay {
 		if now { updateTimer?.fire() }
 	}
 	
-	public func stopUpdating() { updateTimer?.invalidate(); updateTimer = nil }
+	@objc public func stopUpdating() { updateTimer?.invalidate(); updateTimer = nil }
 	
-	public func startAnimating(_ onFrameChanged: @escaping ((UIImage?)->Void)) {
+	@objc public func startAnimating(_ onFrameChanged: @escaping ((UIImage?)->Void)) {
 		frameTimer?.invalidate()
 		frameTimer = Timer.repeatingBlockTimer(0.4) { [weak self] in
 			guard let strongSelf = self else { return }
@@ -334,18 +334,18 @@ extension SwarmOverlay {
 		}
 	}
 	
-	public func stopAnimating(jumpToLastFrame: Bool = false) {
+	@objc public func stopAnimating(jumpToLastFrame: Bool = false) {
 		frameTimer?.invalidate(); frameTimer = nil
 		cancelLoading()
 		if jumpToLastFrame {frameDwell = dwellCount; index = loopTimes.count - 1 }
 	}
 	
-	public func pauseForMove() {
+	@objc public func pauseForMove() {
 		guard animating else { return }
 		frameTimer?.fireDate = Date.distantFuture
 	}
 	
-	public func unpauseForMove(_ block:()->Void) {
+	@objc public func unpauseForMove(_ block:()->Void) {
 		guard animating else { return }
 		block()
 	}

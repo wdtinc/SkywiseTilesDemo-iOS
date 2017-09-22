@@ -177,8 +177,8 @@ class SwarmCompositor {
 
 @objc open class SwarmOverlayCoordinator: NSObject {
 
-	open var animating: Bool { return overlay.animating }
-	open var frameDate: Date? { return overlay.frameDate as Date? }
+	@objc open var animating: Bool { return overlay.animating }
+	@objc open var frameDate: Date? { return overlay.frameDate as Date? }
 
 	var alpha: CGFloat = 1.0 {
 		didSet {
@@ -188,10 +188,10 @@ class SwarmCompositor {
 		}
 	}
 	
-	open let overlay: SwarmOverlay
+	@objc open let overlay: SwarmOverlay
 	fileprivate weak var mapView: MKMapView? = nil
 	
-	public init(overlay: SwarmOverlay, mapView: MKMapView) {
+	@objc public init(overlay: SwarmOverlay, mapView: MKMapView) {
 		self.overlay = overlay
 		self.mapView = mapView
 		super.init()
@@ -205,18 +205,18 @@ class SwarmCompositor {
 		mapView?.remove(overlay)
 	}
 	
-	lazy open var renderer: SwarmTileOverlayRenderer = {
+	@objc lazy open var renderer: SwarmTileOverlayRenderer = {
 		return SwarmTileOverlayRenderer(overlay: self.overlay)
 	}()
 
 	lazy open var annotation: SwarmAnnotation = { self.overlay.loopAnnotation }()
-	open fileprivate(set) var loopView: SwarmLoopView? = nil
+	@objc open fileprivate(set) var loopView: SwarmLoopView? = nil
 	
-	open func fetchTilesForAnimation(_ mapRect: MKMapRect, readyBlock:@escaping ()->Void) -> Progress {
+	@objc open func fetchTilesForAnimation(_ mapRect: MKMapRect, readyBlock:@escaping ()->Void) -> Progress {
 		return overlay.fetchFramesForAnimation(mapRect, readyBlock: readyBlock)
 	}
 
-	open func regionWillChange() {
+	@objc open func regionWillChange() {
 		overlay.pauseForMove()
 		renderer.hidden = false
 		if let mapView = mapView {
@@ -224,7 +224,7 @@ class SwarmCompositor {
 		}
 	}
 	
-	open func regionDidChange(_ restartAnimation:(()->Void)) {
+	@objc open func regionDidChange(_ restartAnimation:(()->Void)) {
 		overlay.unpauseForMove(restartAnimation)
 		if let mapView = mapView {
 			annotation.positionOn(mapView)
@@ -232,7 +232,7 @@ class SwarmCompositor {
 		renderer.setNeedsDisplay()
 	}
 	
-	open func overlayUpdated(_ restartAnimation:(()->Void)) {
+	@objc open func overlayUpdated(_ restartAnimation:(()->Void)) {
 		regionWillChange()
 		regionDidChange(restartAnimation)
 	}
@@ -242,7 +242,7 @@ class SwarmCompositor {
 		renderer.hidden = (image != nil)
 	}
 	
-	open func annotationView(_ frame: CGRect) -> SwarmLoopView {
+	@objc open func annotationView(_ frame: CGRect) -> SwarmLoopView {
 		let view = mapView?.dequeueReusableAnnotationView(withIdentifier: "SwarmLoopView") as? SwarmLoopView ?? SwarmLoopView(annotation: annotation, reuseIdentifier: "SwarmLoopView")
 		view.swarmImage = nil
 		view.mapView = mapView
@@ -259,22 +259,22 @@ class SwarmCompositor {
 		updateImage(nil)
 	}
 	
-	open func startAnimating(_ onFrameChanged:@escaping ()->Void) {
+	@objc open func startAnimating(_ onFrameChanged:@escaping ()->Void) {
 		overlay.startAnimating { [weak self] (image) in
 			self?.updateImage(image)
 			onFrameChanged()
 		}
 	}
 	
-	open func stopAnimating() {
+	@objc open func stopAnimating() {
 		overlay.stopAnimating(jumpToLastFrame: true)
 		updateImage(nil)
 	}
 	
-	open func startUpdating(_ now: Bool = false, block:@escaping (Bool, NSError?)->()) {
+	@objc open func startUpdating(_ now: Bool = false, block:@escaping (Bool, NSError?)->()) {
 		overlay.startUpdating(now, block: block)
 	}
 	
-	open func stopUpdating() { overlay.stopUpdating() }
+	@objc open func stopUpdating() { overlay.stopUpdating() }
 }
 

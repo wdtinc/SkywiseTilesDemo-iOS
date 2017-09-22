@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-internal func onMainQueue(_ block: @escaping ((Void)->Void)) { DispatchQueue.main.async(execute: block) }
+internal func onMainQueue(_ block: @escaping (()->Void)) { DispatchQueue.main.async(execute: block) }
 
 extension Bundle {
 	static var SwarmBundle: Bundle { return Bundle(for: SwarmManager.self) }
@@ -38,11 +38,11 @@ private class TimerActor {
 	init(block: @escaping ()->()) {
 		self.block = block
 	}
-	dynamic func fire(_ timer: Timer) { block() }
+	@objc dynamic func fire(_ timer: Timer) { block() }
 }
 
 extension Timer {
-	class func repeatingBlockTimer(_ timeInterval: TimeInterval, block: @escaping (Void)->Void) -> Timer {
+	class func repeatingBlockTimer(_ timeInterval: TimeInterval, block: @escaping ()->Void) -> Timer {
 		let actor = TimerActor(block: block)
 		return Timer.scheduledTimer(timeInterval: timeInterval, target: actor, selector: #selector(TimerActor.fire(_:)), userInfo: nil, repeats: true)
 	}
@@ -184,7 +184,7 @@ extension MKTileOverlayRenderer {
 		UIGraphicsPushContext(context)
 		
 		let string = note //"x:\(path.x) y:\(path.y) z:\(path.z) " + note
-		let attribs: [String:AnyObject] = [NSFontAttributeName: UIFont.systemFont(ofSize: rect.height * 0.1), NSForegroundColorAttributeName: color]
+		let attribs: [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: rect.height * 0.1), NSAttributedStringKey.foregroundColor: color]
 		string.draw(with: rect, options: .usesLineFragmentOrigin, attributes: attribs, context: nil)
 		
 		context.setStrokeColor(color.cgColor)
@@ -217,7 +217,7 @@ extension MKTileOverlayPath {
 
 extension HTTPURLResponse {
 	var errorValue: NSError {
-		return NSError(domain: String(describing: SwarmOverlay.self), code: statusCode, userInfo: infoDictionary)
+		return NSError(domain: String(describing: SwarmOverlay.self), code: statusCode, userInfo: infoDictionary as? [String : Any])
 	}
 	
 	var infoDictionary: [AnyHashable: Any] {

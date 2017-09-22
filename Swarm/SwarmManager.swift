@@ -10,9 +10,9 @@ import Foundation
 
 @objc open class SwarmManager: NSObject {
 	
-	open var authentication: Authentication!
+	@objc open var authentication: Authentication!
 	
-	open static let sharedManager = SwarmManager()
+	@objc open static let sharedManager = SwarmManager()
 	
 	override fileprivate init() {
 		super.init()
@@ -40,39 +40,39 @@ import Foundation
 	}()
 	
 	// SwarmGroup accessors for ObjC
-	open var layerIdentifiers: [String] { return SwarmBaseLayer.allLayers.map { $0.description } }
-	open func localizeLayer(_ identifier: String) -> String {
+	@objc open var layerIdentifiers: [String] { return SwarmBaseLayer.allLayers.map { $0.description } }
+	@objc open func localizeLayer(_ identifier: String) -> String {
 		let layer = SwarmBaseLayer(string: identifier)
 		return SwarmBaseLayer.localize(layer)
 	}
-	open func layer(_ identifier: String) -> Int {
+	@objc open func layer(_ identifier: String) -> Int {
 		return SwarmBaseLayer(string: identifier).rawValue
 	}
-	open func layerIdentifier(_ baseLayer: Int) -> String {
+	@objc open func layerIdentifier(_ baseLayer: Int) -> String {
 		return SwarmBaseLayer(rawValue: baseLayer)?.description ?? SwarmBaseLayer.radar.description
 	}
 	
-	open var groupIdentifiers: [String] { return SwarmGroup.allGroups.map { $0.description } }
-	open func localizeGroup(_ identifier: String) -> String {
+	@objc open var groupIdentifiers: [String] { return SwarmGroup.allGroups.map { $0.description } }
+	@objc open func localizeGroup(_ identifier: String) -> String {
 		let group = SwarmGroup(string: identifier)
 		return SwarmGroup.localize(group)
 	}
-	open func group(_ identifier: String) -> Int {
+	@objc open func group(_ identifier: String) -> Int {
 		return SwarmGroup(string: identifier).rawValue
 	}
-	open func groupIdentifier(_ group: Int) -> String {
+	@objc open func groupIdentifier(_ group: Int) -> String {
 		return SwarmGroup(rawValue: group)?.description ?? SwarmGroup.none.description
 	}
 	
-	open var radarOverlay : SwarmOverlay { return overlayForBaseLayer(.radar) }
-	open var satelliteOverlay : SwarmOverlay { return overlayForBaseLayer(.satellite) }
+	@objc open var radarOverlay : SwarmOverlay { return overlayForBaseLayer(.radar) }
+	@objc open var satelliteOverlay : SwarmOverlay { return overlayForBaseLayer(.satellite) }
 	
-	open func overlayForBaseLayer(_ layer: SwarmBaseLayer) -> SwarmOverlay {
+	@objc open func overlayForBaseLayer(_ layer: SwarmBaseLayer) -> SwarmOverlay {
 		assertSetup()
 		return SwarmOverlay(name: layer.description, baseLayer: layer.description, style: "")
 	}
 	
-	open func overlayForGroup(_ group: SwarmGroup, baseLayer: SwarmBaseLayer = .radar) -> SwarmOverlay {
+	@objc open func overlayForGroup(_ group: SwarmGroup, baseLayer: SwarmBaseLayer = .radar) -> SwarmOverlay {
 		assertSetup()
 		let groupId = group.description
 		if let matchingGroup = self.groups.filter({ $0["id"] == groupId }).last {
@@ -82,7 +82,7 @@ import Foundation
 		return overlayForBaseLayer(baseLayer)
 	}
 	
-	open func overlayForType(_ alertType: String, baseLayer: SwarmBaseLayer) -> SwarmOverlay {
+	@objc open func overlayForType(_ alertType: String, baseLayer: SwarmBaseLayer) -> SwarmOverlay {
 		assertSetup()
 		if mappedAlerts.contains(alertType) {
 			let name = alertType + "," + baseLayer.description + "," + alertType
