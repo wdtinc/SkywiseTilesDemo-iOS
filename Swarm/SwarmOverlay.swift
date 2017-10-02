@@ -10,6 +10,27 @@ import Foundation
 import MapKit
 
 
+public final class Atomic<T> {
+	private let lock = DispatchSemaphore(value: 1)
+	private var _value: T
+	
+	public init(value initialValue: T) {
+		_value = initialValue
+	}
+	
+	public var value: T {
+		get {
+			lock.wait(); defer { lock.signal() }
+			return _value
+		}
+		set {
+			lock.wait(); defer { lock.signal() }
+			_value = newValue
+		}
+	}
+}
+
+
 @objc open class SwarmOverlay: MKTileOverlay {
 	
 	let tileQueue = OperationQueue.queue(concurrentCount: 4)
@@ -39,13 +60,17 @@ import MapKit
 	
 	open var loopZoomOffset = 0 { didSet { if loopZoomOffset < 0 { loopZoomOffset = 0 } } }
 	
-	internal var currentFrameTimestamp: String { return (index < loopTimes.count) ?  loopTimes[index] : "" }
+	internal var currentFrameTimestamp: String {
+		let times = loopTimes.value
+		return (index < times.count) ?  times[index] : ""
+	}
 	
 	fileprivate var timestamp: String? = nil
 	
 	fileprivate var baseTimestamp: String {
+		let times = loopTimes.value
 		guard let validTimes = validTimes as? [String:AnyObject] else { return "" }
-		var baseTimes:[String] = Array((validTimes[baseLayerName] as! [String]).suffix(loopTimes.count))
+		var baseTimes:[String] = Array((validTimes[baseLayerName] as! [String]).suffix(times.count))
 		return baseTimes[index]
 	}
 	
@@ -68,8 +93,10 @@ import MapKit
 	fileprivate let renderedImageCache = NSCache<AnyObject, AnyObject>()
 	
 	fileprivate var validTimes: AnyObject? = nil
-	fileprivate var loopTimes: [String] = [] { didSet { index = loopTimes.count - 1 } }
-	
+	fileprivate var loopTimes: Atomic<[String]> = Atomic(value: []) {
+		didSet { index = loopTimes.value.count }
+	}
+
 	internal(set) var zoomScale: MKZoomScale = 0.0
 	internal(set) var contentScale: CGFloat = 1.0
 
@@ -207,7 +234,7 @@ extension SwarmOverlay {
 		let progress = Progress()
 		
 		let loopCache = NSCache<AnyObject, AnyObject>()
-		let times = loopTimes
+		let times = loopTimes.value
 		
 		progress.becomeCurrent(withPendingUnitCount: 1)
 		let finishedProgress = Progress(totalUnitCount: 1)
@@ -227,7 +254,7 @@ extension SwarmOverlay {
 		
 		pendingFetch = finishedOperation
 		
-		loopTimes.forEach { loopTime in
+		times.forEach { loopTime in
 			let frameReady = BlockOperation {
 				guard renderFrames else { return }
 				let compositor = SwarmCompositor(overlay: self, mapRect: mapRect)
@@ -250,7 +277,7 @@ extension SwarmOverlay {
 			operations.append(frameReady)
 			finishedOperation.addDependency(frameReady)
 		}
-		progress.totalUnitCount = Int64(operations.count - loopTimes.count + 1)
+		progress.totalUnitCount = Int64(operations.count - times.count + 1)
 		operations.append(finishedOperation)
 		
 		tileQueue.addOperations(operations, waitUntilFinished: false)
@@ -277,15 +304,15 @@ extension SwarmOverlay {
 					let JSON = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject], error == nil && (response as? HTTPURLResponse)?.statusCode == 200
 				else { throw ValidTimesError.nonsenseResponse }
 				
-				let oldLoopTimes = self.loopTimes
+				let oldLoopTimes = self.loopTimes.value
 				
 				self.validTimes = JSON as AnyObject?
 				self.timestamp = self.name.components(separatedBy: ",")
 					.map { return (JSON[$0] as? [String])?.last ?? "" }
 					.joined(separator: ",")
-				self.loopTimes = self.processValidTimesForAnimation()
+				self.loopTimes.value = self.processValidTimesForAnimation()
 				
-				onMainQueue {  completionBlock((oldLoopTimes != self.loopTimes), nil) }
+				onMainQueue {  completionBlock((oldLoopTimes != self.loopTimes.value), nil) }
 			}
 			catch {
 				let httpError = (response as? HTTPURLResponse)?.errorValue ?? self.validtimesResponseError
@@ -317,17 +344,17 @@ extension SwarmOverlay {
 		frameTimer?.invalidate()
 		frameTimer = Timer.repeatingBlockTimer(0.4) { [weak self] in
 			guard let strongSelf = self else { return }
-			
+			let times = strongSelf.loopTimes.value
 			var nextFrame = strongSelf.index + 1
 			
-			if (nextFrame >= strongSelf.loopTimes.count) {
+			if (nextFrame >= times.count) {
 				strongSelf.frameDwell = strongSelf.frameDwell + 1
 				if strongSelf.frameDwell < strongSelf.dwellCount {
 					return
 				}
 			}
 			
-			if nextFrame >= strongSelf.loopTimes.count { strongSelf.frameDwell = 0; nextFrame = 0 }
+			if nextFrame >= times.count { strongSelf.frameDwell = 0; nextFrame = 0 }
 			strongSelf.index = nextFrame
 			
 			onFrameChanged(strongSelf.renderedImageCache.object(forKey: strongSelf.currentFrameTimestamp as AnyObject) as? UIImage)
@@ -337,7 +364,7 @@ extension SwarmOverlay {
 	@objc public func stopAnimating(jumpToLastFrame: Bool = false) {
 		frameTimer?.invalidate(); frameTimer = nil
 		cancelLoading()
-		if jumpToLastFrame {frameDwell = dwellCount; index = loopTimes.count - 1 }
+		if jumpToLastFrame {frameDwell = dwellCount; index = loopTimes.value.count - 1 }
 	}
 	
 	@objc public func pauseForMove() {
