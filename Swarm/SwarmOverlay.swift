@@ -364,7 +364,11 @@ extension SwarmOverlay {
 	@objc public func stopAnimating(jumpToLastFrame: Bool = false) {
 		frameTimer?.invalidate(); frameTimer = nil
 		cancelLoading()
-		if jumpToLastFrame {frameDwell = dwellCount; index = loopTimes.value.count - 1 }
+		if jumpToLastFrame {
+			frameDwell = dwellCount
+			let count = loopTimes.value.count
+			index = count > 0 ? count - 1 : 0
+		}
 	}
 	
 	@objc public func pauseForMove() {
