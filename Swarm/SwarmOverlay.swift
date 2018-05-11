@@ -93,9 +93,7 @@ public final class Atomic<T> {
 	fileprivate let renderedImageCache = NSCache<AnyObject, AnyObject>()
 	
 	fileprivate var validTimes: AnyObject? = nil
-	fileprivate var loopTimes: Atomic<[String]> = Atomic(value: []) {
-		didSet { index = loopTimes.value.count }
-	}
+	fileprivate var loopTimes: Atomic<[String]> = Atomic(value: []) 
 
 	internal(set) var zoomScale: MKZoomScale = 0.0
 	internal(set) var contentScale: CGFloat = 1.0
@@ -312,7 +310,9 @@ extension SwarmOverlay {
 					.joined(separator: ",")
 				self.loopTimes.value = self.processValidTimesForAnimation()
 				
-				onMainQueue {  completionBlock((oldLoopTimes != self.loopTimes.value), nil) }
+				onMainQueue {
+					self.index = self.loopTimes.value.count - 1
+					completionBlock((oldLoopTimes != self.loopTimes.value), nil) }
 			}
 			catch {
 				let httpError = (response as? HTTPURLResponse)?.errorValue ?? self.validtimesResponseError
