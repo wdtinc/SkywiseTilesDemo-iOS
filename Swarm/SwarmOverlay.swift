@@ -70,7 +70,7 @@ public final class Atomic<T> {
 	fileprivate var baseTimestamp: String {
 		let times = loopTimes.value
 		guard let validTimes = validTimes as? [String:AnyObject] else { return "" }
-		var baseTimes:[String] = Array((validTimes[baseLayerName] as! [String]).suffix(times.count))
+		let baseTimes:[String] = Array((validTimes[baseLayerName] as! [String]).suffix(times.count))
 		return baseTimes[index]
 	}
 	

@@ -161,7 +161,7 @@ extension AnnotationLoopViewController : MKMapViewDelegate {
 		if let _ = overlay as? SwarmOverlay, let coordinator = swarmCoordinator {
 			return coordinator.renderer
 		}
-		return MKOverlayRenderer(overlay: overlay)
+		return MKTileOverlayRenderer(overlay: overlay)
 	}
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
