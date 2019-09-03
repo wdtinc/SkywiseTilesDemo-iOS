@@ -12,7 +12,7 @@ import Foundation
 	
 	@objc open var authentication: Authentication!
 	
-	@objc open static let sharedManager = SwarmManager()
+	@objc public static let sharedManager = SwarmManager()
 	
 	override fileprivate init() {
 		super.init()

@@ -37,7 +37,7 @@ open class SwarmTileOverlayRenderer: MKTileOverlayRenderer {
 		
 		swarmOverlay.downloadTileAtURL(url) { [weak self] error in
 			guard error == nil else { return }
-			self?.setNeedsDisplayIn(mapRect, zoomScale: zoomScale)
+			self?.setNeedsDisplay(mapRect, zoomScale: zoomScale)
 		}
 		return false
 	}

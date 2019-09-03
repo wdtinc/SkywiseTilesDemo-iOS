@@ -66,7 +66,7 @@
 
 - (void)updateProgressBar {
 	self.progressView.progress = _progress.fractionCompleted;
-	[UIView animateWithDuration:0.2 animations:^{ _progressView.alpha = (_progressView.progress >= 1.0) ? 0.0 : 1.0; }];
+	[UIView animateWithDuration:0.2 animations:^{ self.progressView.alpha = (self.progressView.progress >= 1.0) ? 0.0 : 1.0; }];
 }
 
 #pragma mark Setters

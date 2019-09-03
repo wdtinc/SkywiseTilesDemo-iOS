@@ -58,7 +58,7 @@
 	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 	[_swarmCoordinator regionWillChange];
 	[coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-		[_swarmCoordinator regionDidChange:^{
+		[self.swarmCoordinator regionDidChange:^{
 			[self beginLoop];
 		}];
 	}];
@@ -107,7 +107,7 @@
 
 - (void)updateProgressBar {
 	self.progressView.progress = _progress.fractionCompleted;
-	[UIView animateWithDuration:0.2 animations:^{ _progressView.alpha = (_progressView.progress >= 1.0) ? 0.0 : 1.0; }];
+	[UIView animateWithDuration:0.2 animations:^{ self.progressView.alpha = (self.progressView.progress >= 1.0) ? 0.0 : 1.0; }];
 }
 
 #pragma mark -

@@ -53,7 +53,7 @@ extension LayersViewController  {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-		let accessoryType: UITableViewCellAccessoryType = {
+		let accessoryType: UITableViewCell.AccessoryType = {
 			switch indexPath.section {
 			case 0:  return (indexPath.row == selectedLayer.rawValue) ? .checkmark : .none
 			case 1: return (indexPath.row == selectedGroup.rawValue) ? .checkmark : .none

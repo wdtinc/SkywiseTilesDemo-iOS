@@ -23,10 +23,10 @@ class AnnotationLoopViewController: UIViewController  {
 			if let oldCoordinator = oldValue {
 				endLoop()
 				oldCoordinator.stopUpdating()
-				mapView.remove(oldCoordinator.overlay)
+				mapView.removeOverlay(oldCoordinator.overlay)
 			}
 			if let coordinator = swarmCoordinator {
-				mapView.add(coordinator.overlay)
+				mapView.addOverlay(coordinator.overlay)
 				coordinator.startUpdating(block: { [weak self] (dataAvailable, error) in
 					print(error as Any)
 					if dataAvailable { self?.swarmCoordinator?.overlayUpdated { self?.beginLoop() } }
@@ -113,7 +113,7 @@ extension AnnotationLoopViewController {
 	
 	func beginLoop() {
 		guard let coordinator = swarmCoordinator else { return }
-		playButton.setTitle("Loading", for: UIControlState())
+		playButton.setTitle("Loading", for: UIControl.State())
 		self.progress = coordinator.fetchTilesForAnimation(mapView.visibleMapRect,
 			readyBlock: { [weak self] in
 				guard let strongSelf = self else { return }
@@ -126,7 +126,7 @@ extension AnnotationLoopViewController {
 	
 	func endLoop() {
 		swarmCoordinator?.stopAnimating()
-		playButton.setTitle("Play", for: UIControlState())
+		playButton.setTitle("Play", for: UIControl.State())
 		updateDateLabel()
 	}
 
@@ -177,7 +177,7 @@ extension AnnotationLoopViewController : MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
 		//loopAnnotationView.regionChanged()
 		if let loopAnnotationView = swarmCoordinator?.loopView {
-			loopAnnotationView.superview?.sendSubview(toBack: loopAnnotationView)
+			loopAnnotationView.superview?.sendSubviewToBack(loopAnnotationView)
 		}
 	}
 	

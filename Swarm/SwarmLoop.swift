@@ -103,11 +103,11 @@ extension MKMapRect {
 		return CGRect(x: floor(clipX), y: floor(clipY), width: x2-clipX, height: y2-clipY)
 	}
 	static func rectFromCoordinates(_ northeast: CLLocationCoordinate2D, southwest: CLLocationCoordinate2D) -> MKMapRect {
-		let swTilePoint = MKMapPointForCoordinate(southwest)
-		let neTilePoint = MKMapPointForCoordinate(northeast)
+		let swTilePoint = MKMapPoint.init(southwest)
+		let neTilePoint = MKMapPoint.init(northeast)
 		var northeastX = neTilePoint.x
 		if (swTilePoint.x > neTilePoint.x) {
-			northeastX = neTilePoint.x + MKMapRectWorld.size.width;
+			northeastX = neTilePoint.x + MKMapRect.world.size.width;
 		}
 		
 		return MKMapRect(
@@ -188,7 +188,7 @@ class SwarmCompositor {
 		}
 	}
 	
-	@objc open let overlay: SwarmOverlay
+	@objc public let overlay: SwarmOverlay
 	fileprivate weak var mapView: MKMapView? = nil
 	
 	@objc public init(overlay: SwarmOverlay, mapView: MKMapView) {
@@ -202,7 +202,7 @@ class SwarmCompositor {
 		overlay.stopAnimating()
 		overlay.stopUpdating()
 		mapView?.removeAnnotation(annotation)
-		mapView?.remove(overlay)
+		mapView?.removeOverlay(overlay)
 	}
 	
 	@objc lazy open var renderer: SwarmTileOverlayRenderer = {

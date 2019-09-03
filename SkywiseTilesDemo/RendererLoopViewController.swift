@@ -24,7 +24,7 @@ class RendererLoopViewController: UIViewController  {
 	var swarmOverlay: SwarmOverlay? = nil {
 		didSet {
 			if let oldOverlay = oldValue {
-				self.mapView.remove(oldOverlay)
+				self.mapView.removeOverlay(oldOverlay)
 				oldOverlay.stopUpdating()
 				endLoop()
 			}
@@ -33,7 +33,7 @@ class RendererLoopViewController: UIViewController  {
 					self?.swarmRenderer?.setNeedsDisplay()
 					self?.updateDateLabel()
 				})
-				mapView.add(overlay, level: .aboveRoads)
+				mapView.addOverlay(overlay, level: .aboveRoads)
 			}
 		}
 	}
@@ -91,7 +91,7 @@ extension RendererLoopViewController {
 	
 	func beginLoop() {
 		guard let overlay = swarmOverlay else { return }
-		playButton.setTitle("Loading", for: UIControlState())
+		playButton.setTitle("Loading", for: UIControl.State())
 		self.progress = overlay.fetchTilesForAnimation(self.mapView.visibleMapRect, readyBlock: { [weak self] in
 			guard let strongSelf = self else { return }
 			strongSelf.playButton.setTitle("Stop", for: .normal)
@@ -104,9 +104,9 @@ extension RendererLoopViewController {
 	
 	func endLoop() {
 		swarmOverlay?.stopAnimating(jumpToLastFrame: true)
-		playButton.setTitle("Play", for: UIControlState())
+		playButton.setTitle("Play", for: UIControl.State())
 		updateDateLabel()
-		swarmRenderer?.setNeedsDisplayIn(mapView.visibleMapRect)
+		swarmRenderer?.setNeedsDisplay(mapView.visibleMapRect)
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {

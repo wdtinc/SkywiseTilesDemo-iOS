@@ -26,10 +26,10 @@ import Foundation
 		super.init()
 	}
 	
-	open let app_id: String
-	open let app_key: String
+	public let app_id: String
+	public let app_key: String
 	
-	open let baseURL: String = "http://skywisetiles.wdtinc.com/"
+	public let baseURL: String = "http://skywisetiles.wdtinc.com/"
 	
 	fileprivate let userAgent = Bundle.main.userAgent
 	

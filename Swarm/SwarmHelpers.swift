@@ -68,7 +68,7 @@ extension MKZoomScale {
 extension MKMapRect {
 	
 	var  mercatorTileOrigin: CGPoint {
-		let region = MKCoordinateRegionForMapRect(self)
+		let region = MKCoordinateRegion.init(self)
 		
 		let x = (region.center.longitude) * (.pi/180.0)
 		let y = (region.center.latitude) * (.pi/180.0)
@@ -100,10 +100,10 @@ extension MKMapRect {
 		let exponent = 20 - zoomLevel
 		let calculatedScale = 1/pow(Double(2), Double(exponent))
 		
-		let minX = Int((MKMapRectGetMinX(self) * calculatedScale) / Double(tileSize))
-		let maxX = Int((MKMapRectGetMaxX(self) * calculatedScale) / Double(tileSize))
-		let minY = Int((MKMapRectGetMinY(self) * calculatedScale) / Double(tileSize))
-		let maxY = Int((MKMapRectGetMaxY(self) * calculatedScale) / Double(tileSize))
+		let minX = Int((self.minX * calculatedScale) / Double(tileSize))
+		let maxX = Int((self.maxX * calculatedScale) / Double(tileSize))
+		let minY = Int((self.minY * calculatedScale) / Double(tileSize))
+		let maxY = Int((self.maxY * calculatedScale) / Double(tileSize))
 		
 		let width = Int(pow(Double(2), Double(zoomLevel)))
 		func adjustX(_ x: Int) -> Int { return (x >= width) ? x - width : x }
@@ -125,7 +125,7 @@ extension MKMapRect {
 				)
 				
 				
-				if MKMapRectIntersectsRect(rect, self) {
+				if rect.intersects(self) {
 					paths.append(MKTileOverlayPath(x: adjustX(x), y: y, z: zoomLevel, contentScaleFactor: contentScale))
 				}
 			}
@@ -138,23 +138,23 @@ extension MKMapRect {
 extension MKMapRect {
 	
 	var northeastCoordinate: CLLocationCoordinate2D {
-		let point = MKMapPointMake(origin.x + size.width, origin.y)
-		return MKCoordinateForMapPoint(point)
+		let point = MKMapPoint.init(x: origin.x + size.width, y: origin.y)
+		return point.coordinate
 	}
 	
 	var southwestCoordinate: CLLocationCoordinate2D {
-		let point = MKMapPointMake(origin.x, origin.y + size.height)
-		return MKCoordinateForMapPoint(point)
+		let point = MKMapPoint.init(x: origin.x, y: origin.y + size.height)
+		return point.coordinate
 	}
 	
 	var northwestCoordinate: CLLocationCoordinate2D {
-		let point = MKMapPointMake(origin.x, origin.y)
-		return MKCoordinateForMapPoint(point)
+		let point = MKMapPoint.init(x: origin.x, y: origin.y)
+		return point.coordinate
 	}
 	
 	var southeastCoordinate: CLLocationCoordinate2D {
-		let point = MKMapPointMake(origin.x + size.width, origin.y + size.height)
-		return MKCoordinateForMapPoint(point)
+		let point = MKMapPoint.init(x: origin.x + size.width, y: origin.y + size.height)
+		return point.coordinate
 	}
 }
 
@@ -184,7 +184,7 @@ extension MKTileOverlayRenderer {
 		UIGraphicsPushContext(context)
 		
 		let string = note //"x:\(path.x) y:\(path.y) z:\(path.z) " + note
-		let attribs: [NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: rect.height * 0.1), NSAttributedStringKey.foregroundColor: color]
+		let attribs: [NSAttributedString.Key:AnyObject] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: rect.height * 0.1), NSAttributedString.Key.foregroundColor: color]
 		string.draw(with: rect, options: .usesLineFragmentOrigin, attributes: attribs, context: nil)
 		
 		context.setStrokeColor(color.cgColor)

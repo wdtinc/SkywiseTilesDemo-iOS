@@ -95,8 +95,8 @@ public final class Atomic<T> {
 	fileprivate var validTimes: AnyObject? = nil
 	fileprivate var loopTimes: Atomic<[String]> = Atomic(value: []) 
 
-	internal(set) var zoomScale: MKZoomScale = 0.0
-	internal(set) var contentScale: CGFloat = 1.0
+	internal var zoomScale: MKZoomScale = 0.0
+	internal var contentScale: CGFloat = 1.0
 
 	override init(urlTemplate URLTemplate: String?) {
 		manager.assertSetup()
@@ -133,8 +133,8 @@ public final class Atomic<T> {
 
 extension SwarmOverlay {
 	
-	fileprivate var stylesQuery: String { return (style.characters.count > 0) ? ("&STYLES=" + style) : ""  }
-	fileprivate var styleParm: String {  return (style.characters.count > 0) ? ("?STYLE=" + style) : "" }
+	fileprivate var stylesQuery: String { return (style.count > 0) ? ("&STYLES=" + style) : ""  }
+	fileprivate var styleParm: String {  return (style.count > 0) ? ("?STYLE=" + style) : "" }
 	
 	func urlForSwarmCompositeTile(_ path: MKTileOverlayPath, timestamp: String? = nil) -> String {
 		return manager.authentication.baseURL + String(format: compositeFormat, path.z, path.x, path.y, name, timestamp ?? self.timestamp!, stylesQuery)
@@ -285,7 +285,7 @@ extension SwarmOverlay {
 
 extension SwarmOverlay {
 
-	var isTimestampValid: Bool { return currentFrameTimestamp.characters.count > 0 }
+	var isTimestampValid: Bool { return currentFrameTimestamp.count > 0 }
 	
 	@objc public func queryTimes(_ completionBlock:@escaping (_ dataAvailable: Bool, _ error: NSError?)->Void) {
 		manager.assertSetup()
